@@ -1,0 +1,100 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "capitalcityrecords_submission",
+	"description": "Describes an artist's submission for juried or moderated inclusion in a collection",
+	"type": "object",
+	"properties": {
+		"id": {
+			"description": "The murfie-platform identifier of this instance, not guaranteed to be unique",
+			"type": "string"
+		},
+		"my_schema": {
+			"description": "The local schema type, namespace, or fully qualified schema used to validate this instance.",
+			"type": "string"
+		},
+		"submitter_name": {
+			"description": "The name of the person submitting the form.",
+			"type": "string"
+		},
+		"submitter_email": {
+			"description": "The email address of the person submitting the form.",
+			"type": "string",
+			"format": "email"
+		},
+		"submission_date": {
+			"description": "The date the form was submitted.",
+			"type": "string",
+			"format": "datetime"
+		},
+		"artist": {
+			"description": "The artist submitted",
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"bio": {
+					"type": "string"
+				},
+				"youtube_url": {
+					"type": "string",
+					"format": "uri",
+					"pattern": "youtube"
+				},
+				"social_media_url": {
+					"type": "string"
+				},
+				"website_url": {
+					"type": "string"
+				}
+			},
+			"required": ["name", "bio"]
+		},
+		"album": {
+			"description": "The album submitted instance",
+			"type": "object",
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"release_date": {
+					"type": "string"
+				},
+				"record_label": {
+					"type": "string"
+				},
+				"upc": {
+					"type": "string"
+				},
+				"tracks": {
+					"type": "array",
+					"items": {
+						"title": "Track",
+						"type": "object",
+						"properties": {
+							"title": {
+								"type": "string"
+							},
+							"filename": {
+								"type": "string"
+							},
+							"url": {
+								"type": "string"
+							},
+							"access_token": {
+								"type": "string"
+							}
+						},
+						"required": ["title", "filename", "url", "access_token"]
+					},
+					"minItems": 1,
+					"maxItems": 3,
+					"uniqueItems": true
+				}
+			},
+			"required": ["title", "release_date", "tracks"]
+		}
+	},
+	"required": ["id", "submitter_email", "artist", "album"],
+	"restricted": ["submitter_email"]
+}

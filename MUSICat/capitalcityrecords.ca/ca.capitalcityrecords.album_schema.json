@@ -1,0 +1,79 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "capitalcityrecords_album",
+	"description": "Describes an album in a collection",
+	"type": "object",
+	"properties": {
+		"id": {
+			"description": "The murfie-platform identifier of this instance, not guaranteed to be unique",
+			"type": "string"
+		},
+		"submitter_name": {
+			"description": "The name of the person submitting the form.",
+			"type": "string"
+		},
+		"submitter_email": {
+			"description": "The email address of the person submitting the form.",
+			"type": "string",
+			"format": "email"
+		},
+		"submission_date": {
+			"description": "The date the form was submitted.",
+			"type": "string",
+			"format": "datetime"
+		},
+		"asset_type": {
+			"description": "The type of asset.",
+			"type": "string",
+			"default": "album"
+		},
+		"title": {
+			"type": "string"
+		},
+		"main_artist": {
+			"description": "The album's main artist",
+			"type": "string"
+		},
+		"release_date": {
+			"type": "string"
+		},
+		"record_label": {
+			"type": "string"
+		},
+		"upc": {
+			"type": "string"
+		},
+		"tracks": {
+			"type": "array",
+			"items": {
+				"title": "Track",
+				"type": "object",
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					},
+					"url": {
+						"type": "string"
+					},
+					"access_token": {
+						"type": "string"
+					},
+					"position": {
+						"type": "integer"
+					},
+					"duration": {
+						"type": "integer"
+					}
+				},
+				"required": ["title", "filename", "url", "access_token"]
+			},
+			"minItems": 1,
+			"uniqueItems": true
+		}
+	},
+	"required": ["id", "submitter_email", "title", "release_date", "tracks", "main_artist"],
+	"restricted": ["submitter_email"]
+}

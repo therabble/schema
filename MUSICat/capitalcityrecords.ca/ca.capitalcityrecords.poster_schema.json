@@ -1,0 +1,37 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "capitalcityrecords_poster",
+	"description": "Describes a poster",
+	"type": "object",
+	"properties": {
+		"submitter_name": {
+			"description": "The name of the person submitting the form.",
+			"type": "string"
+		},
+		"submitter_email": {
+			"description": "The email address of the person submitting the form.",
+			"type": "string",
+			"format": "email"
+		},
+		"submission_date": {
+			"description": "The date the form was submitted.",
+			"type": "string",
+			"format": "datetime"
+		},
+		"poster_image_url": {
+			"description": "The url for the poster image.",
+			"type": "string",
+			"format": "uri"
+		},
+		"poster_artist": {
+			"description": "Names of the artist or artists on the poster",
+			"type": "string"
+		},
+		"poster_text": {
+			"description": "Transcribed text from the poster",
+			"type": "string"
+		}
+	},
+	"required": ["submitter_email"],
+	"restricted": ["submitter_email"]
+}

@@ -1,0 +1,236 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "capitalcityrecords_event",
+	"description": "Describes an event",
+	"type": "object",
+	"properties": {
+		"id": {
+			"description": "The identifier for the event. Not guaranteed to be unique",
+			"type": "string"
+		},
+		"submitter_name": {
+			"description": "The name of the person submitting the form.",
+			"type": "string"
+		},
+		"submitter_email": {
+			"description": "The email address of the person submitting the form.",
+			"type": "string",
+			"format": "email"
+		},
+		"submission_date": {
+			"description": "The date the form was submitted.",
+			"type": "string",
+			"format": "datetime"
+		},
+		"artists": {
+			"type": "array",
+			"items": {
+				"title": "Artist",
+				"type": "object",
+				"properties": {
+					"artist_name": {
+						"type": "string"
+					},
+					"artist_url": {
+						"description": "The MUSICat instance url for the artist",
+						"type": "string",
+						"format": "uri"
+					},
+					"headliner": {
+						"type": "boolean",
+						"description": "Marks the artists as the headliner for the event"
+					},
+					"opening": {
+						"type": "boolean",
+						"description": "Marks the artist as an opener for the event"
+					}
+				}
+			}
+		},
+		"posters": {
+			"type": "array",
+			"items": {
+				"title": "Poster",
+				"type": "object",
+				"properties": {
+					"poster_image_url": {
+						"description": "The url for the poster image.",
+						"type": "string",
+						"format": "uri"
+					},
+					"poster_artist": {
+						"description": "Names of the artist or artists on the poster",
+						"type": "string"
+					},
+					"poster_text": {
+						"description": "Transcribed text from the poster",
+						"type": "string"
+					}
+				}
+			}
+		},
+		"videos": {
+			"type": "array",
+			"items": {
+				"title": "Video",
+				"type": "object",
+				"properties": {
+					"video_title": {
+						"description": "The title of the video.",
+						"type": "string"
+					},
+					"video_type": {
+						"type": "string"
+					},
+					"video_duration": {
+						"type": "number"
+					},
+					"video_url": {
+						"type": "string",
+						"format": "uri"
+					},
+					"video_artist": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"photographs": {
+			"type": "array",
+			"items": {
+				"title": "Photograph",
+				"type": "object",
+				"properties": {
+					"photograph_title": {
+						"type": "string"
+					},
+					"photograph_type": {
+						"type": "string"
+					},
+					"photograph_url": {
+						"type": "string",
+						"format": "uri"
+					},
+					"photograh_artist": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"recordings": {
+			"type": "array",
+			"items": {
+				"title": "Recording",
+				"type": "object",
+				"properties": {
+					"recording_title": {
+						"type": "string"
+					},
+					"recording_type": {
+						"type": "string"
+					},
+					"recording_url": {
+						"type": "string",
+						"format": "uri"
+					},
+					"album_url": {
+						"type": "string",
+						"format": "uri",
+						"description": "URL for album within MUSICat instance."
+					},
+					"recording_artist": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"venues": {
+			"type": "array",
+			"items": {
+				"title": "Venue",
+				"type": "object",
+				"properties": {
+					"venue_name": {
+						"type": "string"
+					},
+					"venue_musicat_url": {
+						"type": "string",
+						"format": "uri",
+						"description": "The url for the venue within the MUSICat instance."
+					},
+					"venue_external_url": {
+						"type": "string",
+						"format": "uri",
+						"description": "The url for the venue's website."
+					}
+				}
+			}
+		},
+		"date": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"date_guessed": {
+			"type": "boolean",
+			"description": "Was the date of the event guessed or known?"
+		},
+		"start_time": {
+			"type": "string",
+			"format": "date-time",
+		},
+		"end_time": {
+			"type": "string",
+			"format": "date-time",
+		},
+		"event_title": {
+			"type": "string"
+		},
+		"event_description": {
+			"type": "string"
+		},
+		"festival_name": {
+			"type": "string"
+		},
+		"promoter": {
+			"type": "string"
+		},
+		"tour": {
+			"type": "string"
+		},
+		"price_advance": {
+			"type": "number"
+		},
+		"price_door": {
+			"type": "number"
+		},
+		"all_ages": {
+			"type": "boolean"
+		},
+		"related_events": {
+			"type": "array",
+			"items": {
+				"title": "Event",
+				"type": "object",
+				"properties": {
+					"event_title": {
+						"type": "string"
+					},
+					"event_url": {
+						"type": "string",
+						"format": "uri",
+						"description": "The url for the related event within the MUSICat instance."
+					}
+				}
+			}
+		},
+		"collection_name": {
+			"type": "string"
+		},
+		"collection_url": {
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"required": ["submitter_email"],
+	"restricted": ["submitter_email"]
+}
