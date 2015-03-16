@@ -50,23 +50,7 @@
 		"posters": {
 			"type": "array",
 			"items": {
-				"title": "Poster",
-				"type": "object",
-				"properties": {
-					"poster_image_url": {
-						"description": "The url for the poster image.",
-						"type": "string",
-						"format": "uri"
-					},
-					"poster_artist": {
-						"description": "Names of the artist or artists on the poster",
-						"type": "string"
-					},
-					"poster_text": {
-						"description": "Transcribed text from the poster",
-						"type": "string"
-					}
-				}
+				"$ref": "#/ca.capitalcityrecords.poster_schema.json"
 			}
 		},
 		"videos": {
