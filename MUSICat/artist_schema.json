@@ -1,0 +1,91 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "artist",
+	"description": "Describes an artist in context of a MUSICat collection",
+	"type": "object",
+	"properties": {
+		"id": {
+			"description": "The MUSICat identifier of this instance, not guaranteed to be unique",
+			"type": "string"
+		},
+		"submitter_name": {
+			"description": "The name of the person submitting the form.",
+			"type": "string"
+		},
+		"submitter_email": {
+			"description": "The email address of the person submitting the form.",
+			"type": "string",
+			"format": "email"
+		},
+		"submission_date": {
+			"description": "The date the form was submitted.",
+			"type": "string",
+			"format": "datetime"
+		},
+		"bio": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"type": {
+			"description": "The type of artist, eg. 'band'",
+			"type": "string"
+		},
+		"genres": {
+			"description": "A comma-seperated list of genres",
+			"type": "string"
+		},
+		"banner_image": {
+			"type": "string",
+			"format": "uri"
+		},
+		"youtube_url": {
+			"type": "string",
+			"format": "uri",
+			"pattern": "youtube"
+		},
+		"social_media_urls": {
+			"type": "array",
+			"items": {
+				"title": "url",
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The name of the social media resource (eg. 'Facebook')"
+					},
+					"url": {
+						"type": "string",
+						"format": "uri"
+					}
+				}
+			}
+		},
+		"website_url": {
+			"type": "string",
+			"format": "uri"
+		},
+		"songkick_artist_id": {
+			"type": "string",
+			"description": "The artist id from songkick"
+		},
+		"birth_date": {
+			"type": "string",
+            "format": "date-time"
+		},
+		"death_date": {
+			"type": "string",
+            "format": "date-time"
+		},
+		"collection_name": {
+			"type": "string"
+		},
+		"collection_url": {
+			"type": "string",
+			"format": "uri"
+		}
+	},
+	"required": ["id", "name", "submitter_email", "bio", "banner_image"],
+	"restricted": ["submitter_email"]
+}
