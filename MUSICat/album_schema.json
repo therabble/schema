@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://www.musicat.co/the-rabble/schemas/artist/",
+  "title": "album",
+  "description": "Describes an album in a MUSICat collection",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The MUSICat identifier of this instance, not guaranteed to be unique",
+      "type": "string"
+    },
+    "asset_type": {
+      "description": "The type of asset.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "album"
+    },
+    "title": {
+      "type": "string"
+    },
+    "main_artist_name": {
+      "description": "The album's main artist",
+      "type": "string"
+    },
+    "main_artist_individual_name": {
+      "description": "Personal name of the album's main artist, when that artist is an individual.",
+      "type": "string"
+    },
+    "main_artist_group_name": {
+      "description": "The collective name of the album's main artist, when that artist is a band, musical group, or project.",
+      "type": "string"
+    },
+    "front_cover_art": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "genre": {
+        "type": ["string", "null"]
+    },
+    "release_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "record_label": {
+      "type": "string"
+    },
+    "publish": {
+      "type": ["boolean", "null"],
+      "description": "PROBABLY DEPRECATED"
+    },
+    "owner": {
+      "type": ["string", "null"],
+      "description": "PROBABLY DEPRECATED"
+    },
+    "upc": {
+      "type": "string"
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "title": "Track",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "access_token": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer"
+          },
+          "duration": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "title",
+          "filename",
+          "url",
+          "access_token"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "release_date",
+    "tracks",
+    "main_artist_name"
+  ],
+  "oneOf": [
+    { "required": ["main_artist_individual_name"] },
+    { "required": ["main_artist_group_name"] }
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,107 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://www.musicat.co/the-rabble/schemas/artist/",
+	"title": "artist",
+	"description": "Describes an artist in context of a MUSICat collection",
+	"type": "object",
+	"properties": {
+		"id": {
+			"description": "The MUSICat identifier of this instance, not guaranteed to be unique",
+			"type": "string"
+		},
+		"bio": {
+			"description": "Biographical, musicological, historical, or community information about this artist.",
+			"type": "string"
+		},
+		"name": {
+			"description": "How this artist (whether collective or solo) is known and spoken of; what you'd see on a marquee at a performance.",
+			"type": "string"
+		},
+		"individual_name": {
+			"type": "string",
+			"description": "The personal name of a solo artist. If present, this should be the same as data.name."
+		},
+		"group_name": {
+			"type": "string",
+			"description": "The band name of a musical group. If present, this should be the same as data.name."
+		},
+		"type": {
+			"description": "The type of artist, eg. 'band'",
+			"type": ["string", "null"]
+		},
+		"tags": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"genres": {
+			"description": "A comma-seperated list of genres",
+			"type": ["string", "null"]
+		},
+		"banner_image": {
+			"description": "A suitably iconic visual representation of the artist.",
+			"type": "string",
+			"format": "uri"
+		},
+		"banner_thumbnail_data": {
+			"type": "string",
+			"description": "MUSICat-specific display metadata for the banner_image."
+		},
+		"youtube_url": {
+			"type": ["string", "null"],
+			"format": "uri",
+			"pattern": "youtube"
+		},
+		"social_media_urls": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri"
+			}
+		},
+		"website_url": {
+			"type": ["string", "null"],
+			"format": "uri"
+		},
+		"songkick_artist_id": {
+			"type": ["string", "null"],
+			"description": "The artist id from songkick"
+		},
+		"birth_date": {
+			"type": ["string", "null"],
+			"format": "date"
+		},
+		"death_date": {
+			"type": ["string", "null"],
+			"format": "date"
+		},
+		"collection_name": {
+			"type": ["string", "null"]
+		},
+		"collection_url": {
+			"type": ["string", "null"],
+			"format": "uri"
+		},
+		"member_artists": {
+			"description": "The names of individual artists belonging to, or tightly associated with, this artist.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"releases": {
+			"description": "The names of works published by this artist.",
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		}
+	},
+	"required": ["id", "name", "bio", "banner_image"],
+	"oneOf": [
+		{"required": ["individual_name"]},
+		{"required": ["group_name"]}
+	],
+	"additionalProperties": false
+}
